@@ -1,5 +1,5 @@
-import {Coord} from "../liefs-coordinates/liefs-coordinates";
-import {Item} from "../liefs-item/liefs-item";
+import { Coord } from "liefs-coordinates";
+import { Item } from "liefs-item";
 
 export class Container {
     static get(label: string) {
