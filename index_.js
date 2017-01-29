@@ -24,6 +24,8 @@ var Container = (function () {
         var newSize = NOTDEFINED;
         for (var _i = 0, _a = container.items; _i < _a.length; _i++) {
             var eachItem = _a[_i];
+            if (!(eachItem.size))
+                eachItem.size = new Coord;
             if (eachItem.start.slice(-2) === "px")
                 newSize = parseInt(eachItem.start.slice(0, -2));
             if (newSize !== NOTDEFINED) {

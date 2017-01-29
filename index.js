@@ -1,4 +1,5 @@
 "use strict";
+var liefs_coordinates_1 = require("liefs-coordinates");
 var Container = (function () {
     function Container(label, trueIsHor, items, margin) {
         if (margin === void 0) { margin = Container.marginDefault; }
@@ -25,6 +26,8 @@ var Container = (function () {
         var newSize = NOTDEFINED;
         for (var _i = 0, _a = container.items; _i < _a.length; _i++) {
             var eachItem = _a[_i];
+            if (!(eachItem.size))
+                eachItem.size = new liefs_coordinates_1.Coord;
             if (eachItem.start.slice(-2) === "px")
                 newSize = parseInt(eachItem.start.slice(0, -2));
             if (newSize !== NOTDEFINED) {

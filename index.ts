@@ -17,6 +17,7 @@ export class Container {
         let fixed: number = 0;
         let newSize: number = NOTDEFINED;
         for (let eachItem of container.items) {
+            if (!(eachItem.size)) eachItem.size = new Coord;
             if (eachItem.start.slice(-2) === "px") newSize = parseInt(eachItem.start.slice(0, -2));
             if (newSize !== NOTDEFINED) {
                 fixed = fixed + newSize;
@@ -61,8 +62,8 @@ export class Container {
         }
     }
 
-    static updateRecursive(width: number, height: number, container: Container, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): {[index: string]: Coord} {
-        let returnObject: {[index: string]: Coord} = {};
+    static updateRecursive(width: number, height: number, container: Container, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): { [index: string]: Coord } {
+        let returnObject: { [index: string]: Coord } = {};
         Container.percent(container, width, height, Container.fixed(container, width, height));
         Container.fill(container, xOffset, yOffset);
         for (let thisItem of container.items) {
@@ -81,14 +82,14 @@ export class Container {
     }
 
     static debug = true;
-    static containers: {[index: string]: Container; } = {};
+    static containers: { [index: string]: Container; } = {};
     static marginDefault: number = 4;
 
     label: string;
     margin: number;
     direction: boolean;
     items: Item[] = [];
-    lastUpdate: {[index: string]: Coord};
+    lastUpdate: { [index: string]: Coord };
 
     constructor(label: string, trueIsHor: boolean, items: Item[], margin: number = Container.marginDefault) {
         this.label = label; this.direction = trueIsHor; this.items = items; this.margin = margin;
@@ -97,14 +98,14 @@ export class Container {
     }
 
     itemsCheck() {
-      let totalPercent: number = 0;
-      for (let eachItem of this.items)
-        if (eachItem.start.slice(-1) === "%")
-          totalPercent += parseInt( eachItem.start.slice(0, -1) );
-      if (totalPercent !== 100) liefsError.badArgs(this.label + " to total 100%", " a total of " + totalPercent.toString() + "%", "Container.itemsCheck()");
+        let totalPercent: number = 0;
+        for (let eachItem of this.items)
+            if (eachItem.start.slice(-1) === "%")
+                totalPercent += parseInt(eachItem.start.slice(0, -1));
+        if (totalPercent !== 100) liefsError.badArgs(this.label + " to total 100%", " a total of " + totalPercent.toString() + "%", "Container.itemsCheck()");
     }
 
-    update(width: number, height: number, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): {[index: string]: Coord} {
+    update(width: number, height: number, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): { [index: string]: Coord } {
         this.lastUpdate = Container.updateRecursive(width, height, this, xOffset, yOffset, includeParents);
         return this.lastUpdate;
     }
