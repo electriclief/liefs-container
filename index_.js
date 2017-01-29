@@ -1,4 +1,3 @@
-"use strict";
 var Container = (function () {
     function Container(label, trueIsHor, items, margin) {
         if (margin === void 0) { margin = Container.marginDefault; }
