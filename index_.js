@@ -6,7 +6,7 @@ var Container = (function () {
         this.direction = trueIsHor;
         this.items = items;
         this.margin = margin;
-        Container.containers[label] = this;
+        Container.containers[label] = Container.lastDefined = this;
         this.itemsCheck();
     }
     Container.get = function (label) {
@@ -95,6 +95,10 @@ var Container = (function () {
             returnObject[thisItem.label] = thisItem.size;
         }
         return returnObject;
+    };
+    Container.root = function () {
+        return (Container.suspectedRoot)
+            ? Container.suspectedRoot : Container.lastDefined;
     };
     Container.prototype.itemsCheck = function () {
         var totalPercent = 0;

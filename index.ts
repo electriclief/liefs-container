@@ -84,6 +84,10 @@ export class Container {
     static debug = true;
     static containers: { [index: string]: Container; } = {};
     static marginDefault: number = 4;
+    static suspectedRoot: Container;
+    static lastDefined: Container;
+    static root() {return (Container.suspectedRoot)
+                    ? Container.suspectedRoot : Container.lastDefined; }
 
     label: string;
     margin: number;
@@ -93,7 +97,7 @@ export class Container {
 
     constructor(label: string, trueIsHor: boolean, items: Item[], margin: number = Container.marginDefault) {
         this.label = label; this.direction = trueIsHor; this.items = items; this.margin = margin;
-        Container.containers[label] = this;
+        Container.containers[label] = Container.lastDefined = this;
         this.itemsCheck();
     }
 
