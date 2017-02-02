@@ -87,7 +87,7 @@ var Container = (function () {
             var height_1 = thisItem.size.height + container.margin * 2;
             var x = thisItem.size.x - container.margin;
             var y = thisItem.size.y - container.margin;
-            if ("is_a_container" in thisItem && (thisItem["is_a_container"])) {
+            if ("container" in thisItem && (thisItem["container"])) {
                 if (includeParents)
                     returnObject[thisItem.label] = thisItem.size;
                 var temp = Container.updateRecursive(width_1, height_1, thisItem.container, x, y);
