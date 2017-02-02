@@ -1,3 +1,4 @@
+import { isUniqueSelector} from "liefs-lib";
 import { Coord } from "liefs-coordinates";
 import { Item } from "liefs-item";
 
@@ -94,11 +95,14 @@ export class Container {
     direction: boolean;
     items: Item[] = [];
     lastUpdate: { [index: string]: Coord };
+    el: Element;
+    selector = () => { return "#" + this.label; };
 
     constructor(label: string, trueIsHor: boolean, items: Item[], margin: number = Container.marginDefault) {
         this.label = label; this.direction = trueIsHor; this.items = items; this.margin = margin;
         Container.containers[label] = Container.lastDefined = this;
         this.itemsCheck();
+        if (isUniqueSelector(this.selector())) this.el = document.querySelectorAll(this.selector())[0];
     }
 
     itemsCheck() {

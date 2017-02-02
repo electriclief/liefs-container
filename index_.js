@@ -1,13 +1,17 @@
 var Container = (function () {
     function Container(label, trueIsHor, items, margin) {
         if (margin === void 0) { margin = Container.marginDefault; }
+        var _this = this;
         this.items = [];
+        this.selector = function () { return "#" + _this.label; };
         this.label = label;
         this.direction = trueIsHor;
         this.items = items;
         this.margin = margin;
         Container.containers[label] = Container.lastDefined = this;
         this.itemsCheck();
+        if (isUniqueSelector(this.selector()))
+            this.el = document.querySelectorAll(this.selector())[0];
     }
     Container.get = function (label) {
         if (label in Container.containers)
