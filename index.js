@@ -117,7 +117,7 @@ var Container = (function () {
         if (yOffset === void 0) { yOffset = 0; }
         if (includeParents === void 0) { includeParents = false; }
         this.lastUpdate = Container.updateRecursive(width, height, this, xOffset, yOffset, includeParents);
-        return this.lastUpdate;
+        //        return this.lastUpdate;
     };
     return Container;
 }());

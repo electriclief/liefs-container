@@ -109,9 +109,9 @@ export class Container {
         if (totalPercent !== 100) liefsError.badArgs(this.label + " to total 100%", " a total of " + totalPercent.toString() + "%", "Container.itemsCheck()");
     }
 
-    update(width: number, height: number, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): { [index: string]: Coord } {
+    update(width: number, height: number, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): void /*{ [index: string]: Coord }*/ {
         this.lastUpdate = Container.updateRecursive(width, height, this, xOffset, yOffset, includeParents);
-        return this.lastUpdate;
+//        return this.lastUpdate;
     }
 }
 
