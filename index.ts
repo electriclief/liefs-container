@@ -115,7 +115,12 @@ export class Container {
 
     update(width: number, height: number, xOffset: number = 0, yOffset: number = 0, includeParents: boolean = false): void /*{ [index: string]: Coord }*/ {
         this.lastUpdate = Container.updateRecursive(width, height, this, xOffset, yOffset, includeParents);
-//        return this.lastUpdate;
+    }
+    item(label: string): Item {
+      for (let item of this.items)
+        if (item.label === label) return item;
+          else if (item.container && item.container.item(label)) return item.container.item(label);
+      return undefined;
     }
 }
 

@@ -119,7 +119,16 @@ var Container = (function () {
         if (yOffset === void 0) { yOffset = 0; }
         if (includeParents === void 0) { includeParents = false; }
         this.lastUpdate = Container.updateRecursive(width, height, this, xOffset, yOffset, includeParents);
-        //        return this.lastUpdate;
+    };
+    Container.prototype.item = function (label) {
+        for (var _i = 0, _a = this.items; _i < _a.length; _i++) {
+            var item = _a[_i];
+            if (item.label === label)
+                return item;
+            else if (item.container && item.container.item(label))
+                return item.container.item(label);
+        }
+        return undefined;
     };
     return Container;
 }());
