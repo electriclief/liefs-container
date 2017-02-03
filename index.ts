@@ -7,6 +7,9 @@ export class Container {
     for (let eachKey of Object.keys(Container.containers))
       if (Container.containers[eachKey].items.indexOf(item) > -1)
         return Container.containers[eachKey];
+    console.log("Container of Error: Containers");
+    console.log(Container.containers);
+    console.log(item);
     return undefined;
   }
     static get(label: string) {

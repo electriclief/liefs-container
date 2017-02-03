@@ -22,6 +22,9 @@ var Container = (function () {
             if (Container.containers[eachKey].items.indexOf(item) > -1)
                 return Container.containers[eachKey];
         }
+        console.log("Container of Error: Containers");
+        console.log(Container.containers);
+        console.log(item);
         return undefined;
     };
     Container.get = function (label) {
