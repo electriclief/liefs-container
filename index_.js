@@ -13,6 +13,14 @@ var Container = (function () {
         if (isUniqueSelector(this.selector()))
             this.el = document.querySelectorAll(this.selector())[0];
     }
+    Container.of = function (item) {
+        for (var _i = 0, _a = Object.keys(Container.containers); _i < _a.length; _i++) {
+            var eachKey = _a[_i];
+            if (Container.containers[eachKey].items.indexOf(item) > -1)
+                return Container.containers[eachKey];
+        }
+        return undefined;
+    };
     Container.get = function (label) {
         if (label in Container.containers)
             return Container.containers[label];
@@ -120,7 +128,7 @@ var Container = (function () {
         if (includeParents === void 0) { includeParents = false; }
         this.lastUpdate = Container.updateRecursive(width, height, this, xOffset, yOffset, includeParents);
     };
-    Container.prototype.item = function (label) {
+    Container.prototype.itemByLabel = function (label) {
         for (var _i = 0, _a = this.items; _i < _a.length; _i++) {
             var item = _a[_i];
             if (item.label === label)
