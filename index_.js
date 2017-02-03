@@ -4,6 +4,7 @@ var Container = (function () {
         var _this = this;
         this.items = [];
         this.selector = function () { return "#" + _this.label; };
+        console.log("Defined Container" + label);
         this.label = label;
         this.direction = trueIsHor;
         this.items = items;
