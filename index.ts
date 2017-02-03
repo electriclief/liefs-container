@@ -4,7 +4,7 @@ import { Item } from "liefs-item";
 
 export class Container {
   static of(item: Item) {
-    for (let eachKey of Object.keys(Container.containers))
+    for (let eachKey in Object.keys(Container.containers))
       if (Container.containers[eachKey].items.indexOf(item) > -1)
         return Container.containers[eachKey];
     return undefined;

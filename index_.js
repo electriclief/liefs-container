@@ -14,11 +14,9 @@ var Container = (function () {
             this.el = document.querySelectorAll(this.selector())[0];
     }
     Container.of = function (item) {
-        for (var _i = 0, _a = Object.keys(Container.containers); _i < _a.length; _i++) {
-            var eachKey = _a[_i];
+        for (var eachKey in Object.keys(Container.containers))
             if (Container.containers[eachKey].items.indexOf(item) > -1)
                 return Container.containers[eachKey];
-        }
         return undefined;
     };
     Container.get = function (label) {
