@@ -122,6 +122,7 @@ export class Container {
         for (let eachItem of this.items)
             if (eachItem.start.slice(-1) === "%") totalPercent += parseInt(eachItem.start.slice(0, -1));
             else if ((eachItem.start.slice(-2) === "px")) {
+                console.log(eachItem.label);
                 console.log(eachItem.dragBar);
                 if (eachItem.dragBar) {
                     console.log("before");
