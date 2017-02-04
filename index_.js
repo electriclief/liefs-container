@@ -124,11 +124,13 @@ var Container = (function () {
                 totalPercent += parseInt(eachItem.start.slice(0, -1));
             else if ((eachItem.start.slice(-2) === "px")) {
                 console.log(eachItem.dragBar);
-                console.log("before");
-                console.log(eachItem.dragBar.el.className);
-                eachItem.dragBar.el.className = this.direction ? "Hdragbar" : "Vdragbar";
-                console.log("after");
-                console.log(eachItem.dragBar.el.className);
+                if (eachItem.dragBar) {
+                    console.log("before");
+                    console.log(eachItem.dragBar.el.className);
+                    eachItem.dragBar.el.className = this.direction ? "Hdragbar" : "Vdragbar";
+                    console.log("after");
+                    console.log(eachItem.dragBar.el.className);
+                }
             }
         }
         if (totalPercent !== 100)
