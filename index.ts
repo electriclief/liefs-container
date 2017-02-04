@@ -121,17 +121,17 @@ export class Container {
         let totalPercent: number = 0;
         for (let eachItem of this.items)
             if (eachItem.start.slice(-1) === "%") totalPercent += parseInt(eachItem.start.slice(0, -1));
-            else if ((eachItem.start.slice(-2) === "px")) {
-                console.log(eachItem.label);
-                console.log(eachItem.dragBar);
-                if (eachItem.dragBar) {
-                    console.log("before");
-                    console.log(eachItem.dragBar.el.className);
-                    eachItem.dragBar.el.className = this.direction ? "Hdragbar" : "Vdragbar";
-                    console.log("after");
-                    console.log(eachItem.dragBar.el.className);
-                }
-            }
+            // else if ((eachItem.start.slice(-2) === "px")) {
+            //     console.log(eachItem.label);
+            //     console.log(eachItem.dragBar);
+            //     if (eachItem.dragBar) {
+            //         console.log("before");
+            //         console.log(eachItem.dragBar.el.className);
+            //         eachItem.dragBar.el.className = this.direction ? "Hdragbar" : "Vdragbar";
+            //         console.log("after");
+            //         console.log(eachItem.dragBar.el.className);
+            //     }
+            // }
         if (totalPercent !== 100) liefsError.badArgs(this.label + " to total 100%", " a total of " + totalPercent.toString() + "%", "Container.itemsCheck()");
     }
 
