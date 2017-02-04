@@ -118,8 +118,9 @@ export class Container {
     itemsCheck() {
         let totalPercent: number = 0;
         for (let eachItem of this.items)
-            if (eachItem.start.slice(-1) === "%")
-                totalPercent += parseInt(eachItem.start.slice(0, -1));
+            if (eachItem.start.slice(-1) === "%") totalPercent += parseInt(eachItem.start.slice(0, -1));
+            else if ((eachItem.start.slice(-2) === "px") && eachItem.dragBar)
+                eachItem.dragBar.el.className = this.direction ? "Hdragbar" : "Vdragbar";
         if (totalPercent !== 100) liefsError.badArgs(this.label + " to total 100%", " a total of " + totalPercent.toString() + "%", "Container.itemsCheck()");
     }
 

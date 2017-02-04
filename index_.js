@@ -122,6 +122,8 @@ var Container = (function () {
             var eachItem = _a[_i];
             if (eachItem.start.slice(-1) === "%")
                 totalPercent += parseInt(eachItem.start.slice(0, -1));
+            else if ((eachItem.start.slice(-2) === "px") && eachItem.dragBar)
+                eachItem.dragBar.el.className = this.direction ? "Hdragbar" : "Vdragbar";
         }
         if (totalPercent !== 100)
             liefsError.badArgs(this.label + " to total 100%", " a total of " + totalPercent.toString() + "%", "Container.itemsCheck()");
