@@ -28,7 +28,7 @@ export class Container {
         let newSize: number = NOTDEFINED;
         for (let eachItem of container.items) {
             if (!(eachItem.size)) eachItem.size = new Coord;
-            if (eachItem.start.slice(-2) === "px") newSize = parseInt(eachItem.start.slice(0, -2));
+            if (eachItem.current.slice(-2) === "px") newSize = parseInt(eachItem.current.slice(0, -2));
             if (newSize !== NOTDEFINED) {
                 fixed = fixed + newSize;
                 eachItem.size.width = (container.direction) ? newSize : width - container.margin * 2;
@@ -45,8 +45,8 @@ export class Container {
         let newPercent: number;
         for (let eachItem of container.items) {
             eachItem.lastDirection = container.direction;
-            if ((typeof eachItem.start === "string") && eachItem.start.slice(-1) === "%") {
-                newPercent = parseInt(eachItem.start.slice(0, -1));
+            if ((typeof eachItem.current === "string") && eachItem.current.slice(-1) === "%") {
+                newPercent = parseInt(eachItem.current.slice(0, -1));
                 eachItem.size.width = (container.direction) ? parseInt((pixelsLeftForPercent * (newPercent / 100)).toFixed(0))
                     : width - container.margin * 2;
                 eachItem.size.height = (container.direction) ? height - container.margin * 2
